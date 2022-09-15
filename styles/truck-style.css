@@ -1,0 +1,36 @@
+.logo {
+    font-size: 1em;
+    text-align: center;
+}
+
+.main-class {
+    text-align: center;
+}
+
+.details-container {
+    
+}
+
+.details-image {
+    width: 150px;
+}
+
+.details-title {
+    display: block;
+}
+
+.thumbnails-list {
+    list-style: none;
+}
+
+.thumbnails-item {}
+
+.thumbnails-anchor {}
+
+.thumbnails-image {
+    width: 200px;
+}
+
+.thumbnails-title {
+    display: block;
+}
