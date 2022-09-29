@@ -1,18 +1,80 @@
 .body {
     display: flex;
-    flex-direction: column;
-    background-color: blue;
+    margin: 0;
+
+
 }
+
 .logo {
     display: block;
     font-size: 2em;
     background-color: rgb(37, 196, 196);
     text-align: center;
 }
-.main-board{
-display: flex;
+
+body,
+html {
+    height: 100%;
+
 }
+
+:root {
+    --cell-square-width: 6vw;
+    --cell-square-height: 6vw;
+}
+
+.main-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    justify-content: center;
+
+
+}
+
+.cell-black {
+    height: var(--cell-square-height);
+    width: var(--cell-square-width);
+    background-color: black;
+}
+
+.cell-white {
+    height: var(--cell-square-height);
+    width: var(--cell-square-width);
+    background-color: rgb(255, 255, 255);
+}
+
 .board-row {
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 48vw;
+    border: solid 3px rgb(0, 0, 0);
+
+
 }
 
+@media(min-width: 560px) {
+    :root {
+        --cell-square-width: 4vw;
+        --cell-square-height: 4vw;
+    }
+
+    .board-row {
+        max-width: 32vw;
+    }
+}
+
+@media(min-width:900px) {
+    :root {
+        --cell-square-width: 7vw;
+        --cell-square-height: 7vw;
+    }
+
+    .board-row {
+        max-width: 56vw;
+    }
+}
