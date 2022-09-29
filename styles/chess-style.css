@@ -1,0 +1,18 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+}
+.logo {
+    display: block;
+    font-size: 2em;
+    background-color: rgb(37, 196, 196);
+    text-align: center;
+}
+.main-board{
+display: flex;
+}
+.board-row {
+
+}
+
