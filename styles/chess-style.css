@@ -1,13 +1,12 @@
 .body {
     display: flex;
-    margin: 0;
-
-
 }
 
 .logo {
     display: block;
     font-size: 2em;
+    font-family: cursive;
+    font-style: italic;
     background-color: rgb(37, 196, 196);
     text-align: center;
 }
@@ -25,11 +24,9 @@ html {
 
 .main-board {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh;
     justify-content: center;
-
+    align-items: center;
+    height: 80vh;
 
 }
 
@@ -46,14 +43,11 @@ html {
 }
 
 .board-row {
-
     display: flex;
     flex-direction: row;
-    align-items: center;
     flex-wrap: wrap;
     max-width: 48vw;
     border: solid 3px rgb(0, 0, 0);
-
 
 }
 
@@ -76,5 +70,6 @@ html {
 
     .board-row {
         max-width: 56vw;
+        margin: auto;
     }
 }
