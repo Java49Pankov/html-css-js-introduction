@@ -4,6 +4,12 @@
     src: url("fonts/Airstream-webfont.woff")
 }
 
+@font-face {
+    font-family: lakeshore;
+    src: url("fonts/LAKESHOR-webfont.svg");
+    src: url("fonts/LAKESHOR-webfont.woff");
+}
+
 :root {
     --thumbnails-img-width: 20vw;
     --thumbnails-img-height: 15vw;
@@ -29,6 +35,7 @@ body {
     text-align: center;
     font-family: airstream;
     text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
 .main-class {
@@ -45,6 +52,10 @@ body {
     margin-bottom: 10vh;
 }
 
+.details-frame {
+    position: relative;
+}
+
 .details-image {
     width: 80vw;
     height: 70vw;
@@ -53,6 +64,12 @@ body {
 
 .details-title {
     display: block;
+    font-family: lakeshore;
+    font-style: italic;
+    background-color: rgb(163, 150, 135);
+    position: absolute;
+    left: 3vw;
+    bottom: 1vh;
 }
 
 .thumbnails-list {
@@ -79,6 +96,11 @@ body {
     text-decoration: none;
 }
 
+.thumbnails-item:hover {
+    transform: scale(1.1);
+    margin-left: 1vw;
+}
+
 .thumbnails-image {
     width: var(--thumbnails-img-width);
     height: var(--thumbnails-img-height);
@@ -97,6 +119,7 @@ body {
     :root {
         --thumbnails-img-width: 15vw;
         --thumbnails-img-height: 10vw;
+        --thumbnails-title-height: calc(var(--thumbnails-img-height)* 0.25);
     }
 
     .thumbnails-list {
@@ -108,19 +131,24 @@ body {
     }
 
     .main-class {
-        display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
 
     .details-image {
-        margin-top: 7vh;
         width: 40vw;
         height: 35vw;
     }
 
-    .thumbnails-item {
-        font-size: 1em;
+    .details-title {
+        left: 0;
+        bottom: 8vh;
+    }
+
+    .details-container {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
     }
 
 }
@@ -132,14 +160,17 @@ body {
     }
 
     .details-container {
-        justify-content: center;
+        margin-top: 5vh;
+        margin-right: 5vw;
     }
 
     .thumbnails-list {
-        width: 20vw;
+        padding-right: 2vw;
+        margin-top: 2.5vh;
+        max-height: 86vh;
     }
 
     .thumbnails-title {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 }
