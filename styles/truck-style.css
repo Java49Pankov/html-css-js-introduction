@@ -31,9 +31,9 @@ body {
 .logo {
     display: block;
     background-color: rgb(119, 138, 206);
-    font-size: 2.5em;
+    font-size: 2em;
     text-align: center;
-    font-family: airstream;
+    font-family: lakeshore;
     text-transform: uppercase;
     letter-spacing: 5px;
 }
@@ -64,12 +64,14 @@ body {
 
 .details-title {
     display: block;
-    font-family: lakeshore;
+    font-family: airstream;
     font-style: italic;
-    background-color: rgb(163, 150, 135);
+    background-color: rgb(222, 216, 209);
     position: absolute;
-    left: 3vw;
-    bottom: 1vh;
+    left: 0vw;
+    bottom: 0.5vh;
+    font-size: 1em;
+    color: rgb(0, 122, 183);
 }
 
 .thumbnails-list {
@@ -157,6 +159,10 @@ body {
     .details-image {
         width: 60vw;
         height: 50vw;
+    }
+
+    .details-title {
+        font-size: 2em;
     }
 
     .details-container {
