@@ -1,6 +1,6 @@
 
 function checkTeudatZehut(teudatStrNumber) {
-    if (teudatStrNumber.length < 9 || teudatStrNumber.length > 9) {
+    if (teudatStrNumber.length != 9) {
         return false;
     }
 
@@ -27,20 +27,19 @@ function checkTeudatZehut(teudatStrNumber) {
     }, 0);
     console.log(sum);
 
-    return sum % 2 === 0;
+    return sum % 10 === 0;
 }
-console.log(checkTeudatZehut("376628202"));
+console.log('Result = ', checkTeudatZehut("376628202"));
 
 function generateRandomTeudatZehut() {
-    let randomNum = [];
+    let randomArr = [];
     for (let i = 0; i < 8; i++) {
-        randomNum.push(Math.round(Math.random() * 9));
-    }
-
-    randomNum[8] = 0;
-
+        randomArr.push(Math.round(Math.random() * 9));
+    }    
+    randomArr[8] = 0;
+    
     let code = [];
-    code = randomNum.map(function (num, index) {
+    code = randomArr.map(function (num, index) {
         let digit = +num;
         let res = 0;
         if (index % 2 !== 0) {
@@ -58,13 +57,14 @@ function generateRandomTeudatZehut() {
     let sum = code.reduce(function (prev, current) {
         return prev + current;
     }, 0);
-    do {
-        randomNum[8] = randomNum[8] + 1;
-    } while (sum % 2 != 0);
-    console.log(sum);
-    console.log(randomNum);
-   
-    return sum % 2 === 0;
+    if (sum % 10 !== 0) {
+        let randomNum = Math.floor(sum / 10) * 10;
+        if (randomNum !== sum) {
+            randomArr[8] = randomNum + 10 - sum;
+        }
+    }
+
+    return sum % 10 !== 0;
 }
 console.log(generateRandomTeudatZehut());
 
