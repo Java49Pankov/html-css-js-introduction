@@ -47,7 +47,46 @@ function checkTeudatZehut(teudatStrNumber){
     contril sum should be divide on 10 with no remainder
     example 123456782 => 1 + 4 + 3 + 8 + 5 + 3 + 7 + 7 + 2 = 40 => true
             123456783 => 1 + 4 + 3 + 8 + 5 + 3 + 7 + 7 + 3 = 41 => false
+
+}*/
+function checkTeudatZehut(teudatStrNumber) {
+    let res = false;
+    if (teudatStrNumber.length == 9 && !isNaN(teudatStrNumber)) {
+        let arrayForSum = getArrayForSum(teudatStrNumber);
+        let sum = getSum(arrayForSum);
+        res = sum % 10 == 0;
+    }
+    return res;
 }
+
+function getSum(array) {
+    return array.reduce(function (prev, current) {
+        return prev + current;
+    }, 0);
+}
+
+function getNumberOddIndex(element) {
+    let res = element * 2;
+    if (res > 9) {
+        res -= 9;
+    }
+    return res;
+}
+
+function getCurrentNumber(element, index) {
+    return index % 2 == 0 ? +element : getNumberOddIndex(element);
+}
+
+function getArrayForSum(teudatStrNumber) {
+    let array = Array.from(teudatStrNumber);
+    return array.map(getCurrentNumber);
+}
+
+console.log(checkTeudatZehut("346608201"));
+['346608201', '1234', 'abcd123', '123456783'].forEach(function (e) {
+    console.log(`teudat zehut: ${e}, return of the method checkTeudatZehut: ${checkTeudatZehut(e)}`)
+});
+/*
 function generateRandomTeudatZehut() {
      //TODO
      return string of 9 symbols matching checkTeudatZehut
@@ -56,3 +95,5 @@ function generateRandomTeudatZehut() {
      to get random digit Math.round(Math.random() * 9)
 }
 */
+
+
