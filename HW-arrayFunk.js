@@ -33,15 +33,9 @@ console.log(arrayCopy([1, 2, 3, 4, 5, 6, 7], 3, [10, 20, 30, 40, 50, 60, 70], 4,
 
 function move(array, index, offset) {
     let numOfInd = array[index];
-    if (offset < 0) {
-        let ind = index + offset
-        array.splice(index, 1);
-        array.splice(ind, 0, numOfInd);
-    } else {
-        let ind = index + offset
-        array.splice(index, 1);
-        array.splice(ind, 0, numOfInd);
-    }
+    array.splice(index, 1);
+    array.splice(index + offset, 0, numOfInd);
+
     return array;
 }
 console.log(move([1, 2, 3, 4, 5, 6, 7], 3, -3));
