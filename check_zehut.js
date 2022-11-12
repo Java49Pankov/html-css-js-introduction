@@ -1,73 +1,49 @@
-//=========My code====================
+/*
+function checkTeudatZehut(teudatStrNumber){
+    //TODO
+    control sum of for even index digit value, for odd index digit * 2
+    contril sum should be divide on 10 with no remainder
+    example 123456782 => 1 + 4 + 3 + 8 + 5 + 3 + 7 + 7 + 2 = 40 => true
+            123456783 => 1 + 4 + 3 + 8 + 5 + 3 + 7 + 7 + 3 = 41 => false
+}*/
+
 function checkTeudatZehut(teudatStrNumber) {
-    if (teudatStrNumber.length != 9) {
-        return false;
+    let res = false;
+    if (teudatStrNumber.length == 9 && !isNaN(teudatStrNumber)) {
+        let arrayForSum = getArrayForSum(teudatStrNumber);
+        let sum = getSum(arrayForSum);
+        res = sum % 10 == 0;
     }
-
-    let arNum = Array.from(teudatStrNumber);
-    let arCode = [];
-
-    arCode = arNum.map(function (num, index) {
-        let digit = +num;
-        let res = 0;
-        if (index % 2 !== 0) {
-            res = digit * 2;
-            if (res > 9) {
-                res -= 9;
-            }
-        } else {
-            res = digit;
-        }
-        return res;
-    });
-    console.log(arCode);
-
-    let sum = arCode.reduce(function (previos, current) {
-        return previos + current;
-    }, 0);
-    console.log(sum);
-
-    return sum % 10 === 0;
+    return res;
 }
-console.log('Result = ', checkTeudatZehut("376628202"));
-//=====================================================================
-function generateRandomTeudatZehut() {
-    let randomArr = [];
-    for (let i = 0; i < 8; i++) {
-        randomArr.push(Math.round(Math.random() * 9));
-    }
-    randomArr[8] = 0;
 
-    let code = [];
-    code = randomArr.map(function (num, index) {
-        let digit = +num;
-        let res = 0;
-        if (index % 2 !== 0) {
-            res = digit * 2;
-            if (res > 9) {
-                res -= 9;
-            }
-        } else {
-            res = digit;
-        }
-        return res;
-    });
-    console.log(code);
-
-    let sum = code.reduce(function (prev, current) {
+function getSum(array) {
+    return array.reduce(function (prev, current) {
         return prev + current;
     }, 0);
-    if (sum % 10 !== 0) {
-        let randomNum = Math.floor(sum / 10) * 10;
-        if (randomNum !== sum) {
-            console.log(randomNum);
-            randomArr[8] = randomNum + 10 - sum;
-        }
-    }
-
-    return sum % 10 !== 0;
 }
-console.log("result = ", generateRandomTeudatZehut());
+
+function getNumberOddIndex(element) {
+    let res = element * 2;
+    if (res > 9) {
+        res -= 9;
+    }
+    return res;
+}
+
+function getCurrentNumber(element, index) {
+    return index % 2 == 0 ? +element : getNumberOddIndex(element);
+}
+
+function getArrayForSum(teudatStrNumber) {
+    let array = Array.from(teudatStrNumber);
+    return array.map(getCurrentNumber);
+}
+
+console.log(checkTeudatZehut("346608201"));
+['346608201', '1234', 'abcd123', '123456783'].forEach(function (e) {
+    console.log(`teudat zehut: ${e}, return of the method checkTeudatZehut: ${checkTeudatZehut(e)}`)
+});
 
 //=============Vebinar cod====================
 
@@ -109,6 +85,16 @@ function getEvenValue(number) {
     return number;
 }
 //====================================================================
+/*
+function generateRandomTeudatZehut() {
+     //TODO
+     return string of 9 symbols matching checkTeudatZehut
+     make 8 random digits from 0 to 9
+     9 - th symol should be with accordance of mathing
+     to get random digit Math.round(Math.random() * 9)
+}
+*/
+
 function generateTeudatZehut() {
     let array = getGeneratedArray();
     array[8] = updateCtrlDigit(array);

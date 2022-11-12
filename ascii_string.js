@@ -1,5 +1,30 @@
+//conversion from Morse code to number
+// symbol "." -> 0  "-" -> 1
+function fromMorseToNumber(morseCode) {
+    let result = 0;
+    for (let i = 0; i < morseCode.length; i++) {
+        let code = morseCode[i] == "." ? 0 : 1;
+        result = result * 2 + code;
+    }
+    return result;
+}
+console.log(fromMorseToNumber("-.-....-.---...-.-")); // =>165317
 
-//========Teacher code=====================================
+//conversion from Number  to morse code
+function fromNumberToMorse(number) {
+    number = Math.abs(number);
+    let res = "";
+    do {
+        let digit = number % 2;
+        let sym = digit == 0 ? "." : "-";
+        res = sym + res;
+        number = Math.trunc(number / 2);
+    } while (number != 0);
+    return res;
+}
+console.log(fromNumberToMorse(165317)); // => -.-....-.---...-.-
+
+//=======================================
 function getSymbol(digit) {
     let codeA = 'a'.charCodeAt();
     if (digit > 9) {
@@ -20,9 +45,9 @@ function fromNumberToString(number, base) {
     } while (number != 0);
     return res;
 }
-console.log(fromNumberToString(900550, 36));
+console.log(fromNumberToString(900550, 36)); // java
 
-//=========Teacher code==============================================
+//============================================
 
 function getDigit(symbol) {
     let codeA = 'a'.charCodeAt();
@@ -39,72 +64,4 @@ function fromStringToNumber(string, base) {
     }
     return result;
 }
-console.log(fromStringToNumber("java", 36));
-
-//================================================================
-
-function fromNumberToString(number, base) {
-    number = Math.abs(number);
-    base = Math.abs(base);
-    let res = '';
-    do {
-        let digit = number % base;
-        if (digit >= 10) {
-            digit = digit + 87;
-        } else if (digit < 10) {
-            digit = digit + 48;
-        }
-        let sym = String.fromCharCode(digit);
-        res = sym + res;
-        number = Math.trunc(number / base);
-    } while (number != 0);
-    return res;
-}
-console.log(fromNumberToString(900550, 36));
-console.log(fromNumberToString(-900550, 36));
-console.log(fromNumberToString('900550', 36));
-console.log(fromNumberToString(900550, -36));
-console.log(fromNumberToString(900550, '36'));
-console.log(fromNumberToString(46016237, 36));
-console.log(fromNumberToString(11483, 2));
-
-//===========================================================================
-
-function fromStringToNumber(string, base) {
-    base = Math.abs(base);
-    let res = 0;
-    for (let i = 0; i < string.length; i++) {
-        let code = string[i].charCodeAt();
-        if (base == 2) {
-            code = string[i] == 0 ? 0 : 1;
-        } else if (code >= 10) {
-            code = code - 87;
-        } else if (code < 10) {
-            code = code - 48;
-        }
-        res = res * base + code;
-    }
-    return res;
-}
-console.log(fromStringToNumber('java', 36));
-console.log(fromStringToNumber('java', -36));
-console.log(fromStringToNumber('react', 36));
-console.log(fromStringToNumber('10110011011011', 2));
-
-//=======================================================================
-
-function fromNumberToString1(number, base) {
-    number = Math.abs(number);
-    base = Math.abs(base);
-    let res = '';
-    do {
-        let digit = number % base;
-        let sym = digit.toString(base);
-        res = sym + res;
-        number = Math.trunc(number / base);
-    } while (number != 0);
-    return res;
-}
-console.log(fromNumberToString1(900550, 36));
-console.log(fromNumberToString1(46016237, 36));
-console.log(fromNumberToString1(11483, 2));
+console.log(fromStringToNumber("java", 36)); //900550
