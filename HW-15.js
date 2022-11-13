@@ -9,7 +9,7 @@ function minMax(number) {
 let array = [1, 2, 3, 4, 5]
 console.log(minMax(array));
 console.log(`array input: ${array} array output minMax value: [${minMax(array)}]`);
-
+//By the way, there is method "slice" as well. str.slice(0, prefix.length) != prefix
 function deleteWithPrefix(strings, prefix) {
     let res = strings.filter(str => prefix > str);
     return res;
