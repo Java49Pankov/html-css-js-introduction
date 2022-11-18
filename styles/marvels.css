@@ -1,16 +1,26 @@
 body {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .word-guess {
     display: flex;
     flex-direction: row;
 }
+
 .letter-guess {
     font-size: 1.5em;
     margin-left: 2vw;
+    margin-top: 5vh;
     background-color: black;
     width: 3.5vw;
     text-align: center;
+}
+
+.question-guess {
+    margin: 5vh;
+    font-size: 2em;
+    color: brown;
+
 }
