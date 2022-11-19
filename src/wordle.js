@@ -1,55 +1,66 @@
-const WORD = "pappy";
+const words = ["pappy", "beach", "apple", "react", "basis",
+ "anger", "hello", "dress"];
+ let word;
 const N_LETTERS = 5;
 const letterElements = document.querySelectorAll(".letter-guess");
-const lableWin = document.querySelector(".lable-win");
-const guessSection = document.querySelector('.word-guess');
-const lableLose = document.querySelector('.lable-lose');
-const moveScore = document.querySelector('.move-score');
-let TRAILS = 6;
-const HIDDEN = "hidden";
-
+const trialsElement = document.querySelector(".guess-trials");
+const gameOverElement = document.querySelector(".game-over-message");
+const playAgainElement = document.getElementById("play-again");
+const INITIAL_TRIALS = 6;
+let trials = INITIAL_TRIALS;
+function showTrialsMessage(trials) {
+    
+        trialsElement.innerHTML = `remained ${trials} guess trials`;
+    
+   
+}
+function startGame() {
+    let index = Math.floor(Math.random() * words.length);
+    word = words[index];
+    trials = INITIAL_TRIALS
+    showTrialsMessage(trials);
+    gameOverElement.innerHTML ='';
+    playAgainElement.style.display='none';
+    letterElements.forEach(e => e.innerHTML='')
+}
 function onChange(event) {
     const wordGuess = event.target.value;
-    event.target.value = '';
+    trials--;
+    showTrialsMessage(trials);
+    
+    event.target.value='';
     if (wordGuess.length != N_LETTERS) {
-        alert(`A WORD should contain ${N_LETTERS} letters`)
+        alert(`A word should contain ${N_LETTERS} letters`)
     } else {
         const wordAr = Array.from(wordGuess);
-        wordAr.forEach((l, i) => letterElements[i].innerHTML = l);
-        lableWin.classList.add(HIDDEN);
-        TRAILS--;
+        wordAr.forEach((l, i) => letterElements[i].innerHTML = l)
         const colors = wordAr.map((l, i) => {
-            let index = WORD.indexOf(l);
+            let index = word.indexOf(l);
             let res = 'red';
-            if (index > -1) {        
-                //Tried to compare letters in words with the same index. it worked        
-                res = l == WORD[i] ? 'green' : 'yellow'; 
-               
-                //here we compare the index themselves. ind[2] != ind[0] 
-                // res = index == i ? 'green' : 'yellow';
+            if (index  > -1) {
+                res = l == word[i] ? 'green' : 'yellow'
             }
             return res;
         })
-        colors.forEach((c, i) => letterElements[i].style.color = c);
-        checkWord(wordGuess);
-        moveScores();
+        colors.forEach((c, i) =>
+         letterElements[i].style.color=c)
     }
-}
-
-function checkWord(wordGuess) {
-    if (wordGuess == WORD) {
-        lableWin.classList.remove(HIDDEN);
-        TRAILS = 6;
+    const res = wordGuess == word;
+    if (trials == 0 || res) {
+        endGame(res);
     }
+    
 }
-
-function moveScores() {
-    if (TRAILS == 0) {
-        lableLose.classList.remove(HIDDEN);
+function endGame(isSuccess) {
+    if (isSuccess) {
+        gameOverElement.innerHTML =  "Congratulations you are winner";
+        gameOverElement.style.color = "green"
+    } else {
+        gameOverElement.innerHTML =  "Sorry you are loser";
+        gameOverElement.style.color = "red"
     }
-    moveScore.innerText = `Remaining tries = ${TRAILS} Try again`;
+   
+   playAgainElement.style.display='block';
+   trialsElement.innerHTML = ''
 }
-
-
-
-
+startGame()
