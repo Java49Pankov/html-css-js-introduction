@@ -33,7 +33,6 @@ function getIndex() {
         index = Math.floor(Math.random() * words.length);
     }
     prevInd = index;
-    console.log(prevInd);
     return index;
 }
 
