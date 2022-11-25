@@ -37,9 +37,7 @@ Example: deleteWithPrefix([“abc”, “old_abc”, “lmn”, “123”, “ol
 function deleteWithPrefix(strings, prefix) {
     return strings.filter(str => !str.startsWith(prefix))
 }
-/**
- * test
- */
+/* test */
 console.log("*****************************")
 console.log("test for deleteWithPrefix function");
 let prefixes = ["old_", "new_"];
