@@ -5,23 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/movies.css">
     <title>Movies</title>
 </head>
 
 <body>
+
+    <header class="logo">
+        Movies Rating
+    </header>
+
+    <div class="but">
+        <button onclick="show(0)">All Movies</button>
+        <button onclick="show(1)">Most Popular </button>
+        <button onclick="show(2)">Least Popular</button>
+    </div>
     <section hidden>
         <ul class="movies-list">
         </ul>
     </section>
     <section hidden>
-        <label>Kukureku</label>
+        <label>Most Popular Movie</label>
+        <ul class="details-popularity"></ul>
     </section>
     <section hidden>
-        <label>section3</label>
+        <label> Least Popular Movie</label>
+        <ul class="details-least"></ul>
     </section>
-    <button onclick="show(0)">show section 1</button>
-    <button onclick="show(1)">show section 2</button>
-    <button onclick="show(2)">show section 3</button>
+
 
 </body>
 <script src="src/movies.js"></script>
