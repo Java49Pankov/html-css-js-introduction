@@ -1,27 +1,36 @@
 body,
 html {
-    height: 90%;
+    height: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
     background-color: rgb(127, 227, 255);
+    overflow: hidden;
 }
 
+.main-class {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-left: 2vw;
+
+}
 
 
 .logo {
-    font-size: 3em;
-    font-style: italic;
     display: block;
     text-align: center;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+
 }
 
 .but {
-    
-    margin-top: 5vh;
-    margin-left: 10vw;
+    margin-left: 15vw;
+    margin-bottom: 5vh;
 }
 
 .movies-list {
@@ -29,8 +38,9 @@ body {
 }
 
 .movie-image {
-    height: 75;
+    height: 75vh;
     width: 55vh;
+
 }
 
 .details-title {
@@ -41,10 +51,20 @@ body {
     display: block;
     position: relative;
     max-width: 25vh;
-    left: 100vh;
-    bottom: 70vh;
+    left: 90vh;
+    bottom: 60vh;
     border: solid 2.5px rgb(0, 9, 133);
+
 }
+
+.movie-item {
+   display: block;
+   margin: 1vh;
+   width: 130vh;
+   height: 70vh;
+    overflow: hidden;
+}
+
 
 .details-overview {
     background-color: rgb(26, 62, 191);
@@ -56,6 +76,9 @@ body {
     border: solid 2.5px rgb(0, 9, 133);
 }
 
+
 label {
-margin: 20vw;    
+    font-size: 2em;
+    font-family:'Times New Roman', Times, serif;
+    margin: 20vw;
 }
