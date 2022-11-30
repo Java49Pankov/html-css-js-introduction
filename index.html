@@ -6,24 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
+    <link rel="stylesheet" href="styles/movies.css">
 </head>
 
 <body>
+    <div class="buttons">
+        <button onclick="show(0)">show all movies</button>
+        <button onclick="show(1)">most popular movie</button>
+        <button onclick="show(2)">least popular movie</button>
+    </div>
     <section hidden>
         <ul class="movies-list">
         </ul>
     </section>
     <section hidden>
-        <label>Kukureku</label>
+        <div class="movie-item" id="movie-most">
+        </div>
     </section>
     <section hidden>
-        <label>section3</label>
+        <div class="movie-item" id="movie-least">
+        </div>
     </section>
-    <button onclick="show(0)">show section 1</button>
-    <button onclick="show(1)">show section 2</button>
-    <button onclick="show(2)">show section 3</button>
 
+    <script src="src/movies.js"></script>
 </body>
-<script src="src/movies.js"></script>
 
 </html>
