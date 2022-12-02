@@ -1,8 +1,7 @@
 const ERROR = "error"
 
 const inputElements = document.querySelectorAll(".form-class [name]");
-const xxx = document.querySelectorAll(".two-inputs");
-
+const detailError = document.querySelector(".detail-error");
 function onSubmit(event) {
     event.preventDefault();
     console.log("submitted");
@@ -22,6 +21,7 @@ function onChange(event) {
         event.target.value = showError(event.target);
     } else if (event.target.name = "employee_name" && validateName(event.target.value)) {
         event.target.value = showError(event.target);
+
     } else if (event.target.name == "birthDate") {
         const ar = event.target.value.split("-");
         if (ar[0] < 1950 || ar[0] > new Date().getFullYear()) {
@@ -44,8 +44,11 @@ function validateName(name) {
 
 function showError(element) {
     element.classList.add(ERROR);
+    detailError.textContent = "wrong input";
     setTimeout(function () {
         element.classList.remove(ERROR);
+        detailError.textContent = "";
+
     }, 5000)
     return "";
 }
