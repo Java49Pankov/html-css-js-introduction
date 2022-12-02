@@ -5,30 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
-    <link rel="stylesheet" href="styles/movies.css">
+    <title>Form</title>
+    <link rel="stylesheet" href="styles/form.css">
 </head>
 
 <body>
-    <div class="buttons">
-        <button onclick="show(0)">show all movies</button>
-        <button onclick="show(1)">most popular movie</button>
-        <button onclick="show(2)">least popular movie</button>
-    </div>
-    <section hidden>
-        <ul class="movies-list">
-        </ul>
-    </section>
-    <section hidden>
-        <div class="movie-item" id="movie-most">
+    <form id="employee-form" class="form-class" onsubmit="onSubmit(event)">
+        <div class="two-inputs">
+            <input id="id1" type="text" name="employee_name" required placeholder="Enter employee name"
+                onChange="onChange(event)">
+            
+            
+            <input type="email" name="email" required placeholder="Enter email" onChange="onChange(event)">
         </div>
-    </section>
-    <section hidden>
-        <div class="movie-item" id="movie-least">
+        <div class="date-label">
+            <label>Enter birthDate</label>
+            <input type="date" name="birthDate" required placeholder="birthDate" onChange="onChange(event)">
         </div>
-    </section>
+        <div class="two-inputs">
+            <select name="department" required>
+                <option value hidden selected disabled>
+                    --Select Department--
+                </option>
+                <option value="QA">QA</option>
+                <option value="Development">Development</option>
+                <option value="Managment">Managment</option>
+                <option value="Audit">Audit</option>
+            </select>
+            <input type="number" name="salary" placeholder="Enter salary" required onChange="onChange(event)">
+        </div>
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
 
-    <script src="src/movies.js"></script>
 </body>
+<script src="src/form.js"></script>
 
 </html>
