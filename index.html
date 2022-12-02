@@ -11,15 +11,16 @@
 
 <body>
     <form id="employee-form" class="form-class" onsubmit="onSubmit(event)">
+        <split class="detail-error"></split>
         <div class="two-inputs">
             <input type="text" name="employee_name" required placeholder="Enter employee name"
                 onChange="onChange(event)">
-            <span class="detail-error" aria-live="polite"></span>
             <input type="email" name="email" required placeholder="Enter email" onChange="onChange(event)">
+
         </div>
         <div class="date-label">
-            <label>Enter birthDate</label>
-            <input type="date" name="birthDate" required placeholder="birthDate" onChange="onChange(event)">
+            <label>Enter birthdate</label>
+            <input type="date" name="birthDate" required placeholder="birthdate" onChange="onChange(event)">
         </div>
         <div class="two-inputs">
             <select name="department" required>
@@ -31,7 +32,8 @@
                 <option value="Managment">Managment</option>
                 <option value="Audit">Audit</option>
             </select>
-            <input type="number" name="salary" placeholder="Enter salary" required onChange="onChange(event)">
+            <input class="salarys" type="number" name="salary" placeholder="Enter salary" required
+                onChange="onChange(event)">
         </div>
         <div class="buttons">
             <button type="submit">Submit</button>

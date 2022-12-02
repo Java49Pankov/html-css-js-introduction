@@ -1,17 +1,17 @@
 const ERROR = "error"
-
+const curYear = new Date().getFullYear();
+console.log(curYear);
 const inputElements = document.querySelectorAll(".form-class [name]");
-const detailError = document.querySelector(".detail-error");
+const detailError = document.querySelector(".detail-error")
+
 function onSubmit(event) {
     event.preventDefault();
-    console.log("submitted");
     const employee = Array.from(inputElements).reduce(
         (res, cur) => {
             res[cur.name] = cur.value;
             return res;
         }, {}
     )
-    console.log(employee)
 }
 
 function onChange(event) {
@@ -21,10 +21,9 @@ function onChange(event) {
         event.target.value = showError(event.target);
     } else if (event.target.name = "employee_name" && validateName(event.target.value)) {
         event.target.value = showError(event.target);
-
     } else if (event.target.name == "birthDate") {
-        const ar = event.target.value.split("-");
-        if (ar[0] < 1950 || ar[0] > new Date().getFullYear()) {
+        const arr = (event.target.value).split("-");
+        if (arr[0] < 1950 || arr[0] > curYear) {
             event.target.value = showError(event.target);
         }
     }
@@ -41,20 +40,12 @@ function validateName(name) {
     return name.length < 2 || name.length == 0 || name.length > 32;
 }
 
-
 function showError(element) {
     element.classList.add(ERROR);
     detailError.textContent = "wrong input";
     setTimeout(function () {
         element.classList.remove(ERROR);
         detailError.textContent = "";
-
     }, 5000)
     return "";
 }
-
-
-
-
-
-
