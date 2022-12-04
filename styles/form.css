@@ -1,39 +1,42 @@
- .form-class {
+body, html {
+    height: 100%;
+}
+.form-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.form-class {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
-
 .two-inputs {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    width: 40vw;
+    width: 80vw;
     margin-top: 5vh;
+    
 }
-
 .date-label {
-    display: flex;
-    flex-direction: column;
     margin-top: 5vh;
+    display: flex;
+    flex-direction: column; 
     height: 10vh;
-    max-width: 30vw;
     justify-content: space-around;
 }
-
 .buttons {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    margin-top: 10vh;
     width: 40vw;
-    margin-top: 5vh;
-} 
-
+    
+}
 .error {
-    background-color: red;
-    color: white;
+    border-color: red;
+    color: red;
 }
 
-.detail-error {
-    background-color: red;
-    color: white;
-}
+

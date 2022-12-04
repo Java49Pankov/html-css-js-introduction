@@ -10,18 +10,20 @@
 </head>
 
 <body>
-    <form id="employee-form" class="form-class" onsubmit="onSubmit(event)">
-        <div class="detail-error"></div>
+    <header class="form-title">
+        Employee Form
+    </header>
+    <form id="employee_form" onsubmit="onSubmit(event)" class="form-class">
         <div class="two-inputs">
-            <input type="text" name="employee_name" required placeholder="Enter employee name"
-                onChange="onChange(event)">
-            <input type="email" name="email" required placeholder="Enter email" onChange="onChange(event)">
-
+            <input type="text" name="employee_name" required placeholder="Enter employee name">
+            <input type="email" name="email" placeholder="Enter email" required>
         </div>
         <div class="date-label">
-            <label>Enter birthdate</label>
-            <input type="date" name="birthDate" required placeholder="birthDate" onChange="onChange(event)">
+            <label >Enter birthdate</label>
+            <input type="date"  name="birthDate"  required onchange="onChange(event)">
+            
         </div>
+        <p id="date_error" class="error"></p>
         <div class="two-inputs">
             <select name="department" required>
                 <option value hidden selected disabled>
@@ -29,19 +31,23 @@
                 </option>
                 <option value="QA">QA</option>
                 <option value="Development">Development</option>
-                <option value="Managment">Managment</option>
+                <option value="Management">Management</option>
                 <option value="Audit">Audit</option>
             </select>
-            <input class="salarys" type="number" name="salary" placeholder="Enter salary" required
-                onChange="onChange(event)">
+            <input type="number" name="salary" placeholder="Enter salary"
+             onchange="onChange(event)" required>
+             
         </div>
+        <p id="salary_error" class="error"></p> 
         <div class="buttons">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
         </div>
-    </form>
 
+
+
+    </form>
+    <script src="src/form.js"></script>
 </body>
-<script src="src/form.js"></script>
 
 </html>
