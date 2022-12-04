@@ -1,10 +1,11 @@
-const inputElements = document.querySelectorAll(".form-class [name]");
 const MIN_SALARY = 1000;
 const MAX_SALARY = 40000;
 const MIN_YEAR = 1950;
 const maxYear = getMaxYear();
 const TIME_OUT_ERROR_MESSAGE = 5000;
 const ERROR_CLASS = "error";
+
+const inputElements = document.querySelectorAll(".form-class [name]");
 const dateErrorElement = document.getElementById("date_error");
 const salaryErrorElement = document.getElementById("salary_error");
 
@@ -18,8 +19,8 @@ function onSubmit(event) {
         }, {}
     )
     console.log(employee)
-    
 }
+
 function onChange(event) {
 
     if (event.target.name == "salary") {
@@ -28,6 +29,7 @@ function onChange(event) {
         validateBirthdate(event.target);
     }
 }
+
 function validateSalary(element) {
     const value = +element.value;
     if (value < MIN_SALARY || value > MAX_SALARY) {
@@ -35,24 +37,24 @@ function validateSalary(element) {
             : `salary must be ${MAX_SALARY} or less`;
         showErrorMessage(element, message, salaryErrorElement);
     }
-
 }
+
 function validateBirthdate(element) {
     const value = +element.value.slice(0, 4);
     if (value < MIN_YEAR || value > maxYear) {
-        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater`:
-             `year must be ${maxYear} or less`;
-        showErrorMessage(element, message, dateErrorElement) ;    
+        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater` :
+            `year must be ${maxYear} or less`;
+        showErrorMessage(element, message, dateErrorElement);
 
     }
-
 }
+
 function showErrorMessage(element, message, errorElement) {
     element.classList.add(ERROR_CLASS);
     errorElement.innerHTML = message;
     setTimeout(() => {
         element.classList.remove(ERROR_CLASS);
-        element.value = ''; 
+        element.value = '';
         errorElement.innerHTML = '';
     }, TIME_OUT_ERROR_MESSAGE);
 }
