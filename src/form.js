@@ -4,6 +4,7 @@ const MIN_YEAR = 1950;
 const maxYear = getMaxYear();
 const TIME_OUT_ERROR_MESSAGE = 5000;
 const ERROR_CLASS = "error";
+const company = new Company();
 
 const inputElements = document.querySelectorAll(".form-class [name]");
 const dateErrorElement = document.getElementById("date_error");
@@ -18,11 +19,11 @@ function onSubmit(event) {
             return res;
         }, {}
     )
-    console.log(employee)
+    console.log(employee);
+    company.hireEmployee(employee);
 }
 
 function onChange(event) {
-
     if (event.target.name == "salary") {
         validateSalary(event.target)
     } else if (event.target.name == "birthDate") {
@@ -61,4 +62,19 @@ function showErrorMessage(element, message, errorElement) {
 
 function getMaxYear() {
     return new Date().getFullYear();
+}
+
+function Company() {
+    this.employees = [];
+}
+
+Company.prototype.hireEmployee = function (employee) {
+    this.employees.push(employee);
+}
+
+Company.prototype.getAllEmployees = function () {
+    return this.employees;
+}
+Company.prototype.getEmploeesBySalary = function (salaryFrom, salaryTo) {
+    //TODO
 }
