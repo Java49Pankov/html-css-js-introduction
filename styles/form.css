@@ -1,6 +1,13 @@
- .form-class {
+body,
+html {
+    height: 100%;
+}
+
+.form-class {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .two-inputs {
@@ -26,7 +33,14 @@
     justify-content: space-around;
     width: 40vw;
     margin-top: 5vh;
-} 
+}
+.details-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:  40vw;
+    margin-top: 5vh;
+}
 
 .error {
     background-color: red;
