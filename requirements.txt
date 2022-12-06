@@ -1,0 +1,20 @@
+==========HW#22===================
+
+1. Develop page with three functional views
+1.1. Three buttons triggering the following views
+1.1.1.Add Employee – presents form for inputting an Employee data (see the
+lesson #21)
+1.1.2. Show all employees – presents data about all Employee objects
+1.1.3. Show employees by Salary presents the following
+1.1.3.1. Form with the following
+1.1.3.1.1. Input field for inputting a value of the salary “From”
+1.1.3.1.2. Input field for inputting a value of the salary “To”
+1.1.3.1.3. Button “Submit”
+1.1.3.1.4. Button “Reset”
+1.1.3.1.5. Validation: salaryTo should be greater than the value of
+the salaryFrom
+1.1.3.2. After submitting the form on the same view there should be
+presented the data about all Employees having salary in the inputted
+range (salaryFrom is inclusive, salaryTo is exclusive that is salary >=
+salaryFrom && salary < salaryTo)
+1.2. The data about one Employee is presented as shown below

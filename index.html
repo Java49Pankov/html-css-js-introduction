@@ -36,18 +36,14 @@
                 onChange="onChange(event)">
         </div>
         <div class="buttons">
-            <button type="submit">Submit</button>
+            <button type="submit">Add employees</button>
             <button type="reset">Reset</button>
         </div>
     </form>
-    <div class="buttons">
-        <button onclick="show()">Show all employees</button>
-    </div>
-    <div id="empl">
-    </div>
     <div>
         <form class="salary-form" onsubmit="showBySalary(event)">
             <div class="buttons">
+                <button onclick="showEmplButton()">Show all employees</button>
                 <button type="submit">Show Employees by salary</button>
             </div>
             <div class="two-inputs">
@@ -55,6 +51,8 @@
                 <input type="number" name="toSalary" placeholder="Enter salary" required>
             </div>
         </form>
+    </div>
+    <div id="empl">
     </div>
 </body>
 <script src="src/form.js"></script>

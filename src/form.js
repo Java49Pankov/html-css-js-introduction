@@ -5,8 +5,6 @@ const MAX_SALARY = 40000;
 const MIN_YEAR = 1950;
 const TIME_OUT_ERROR_MESSAGE = 5000;
 const company = new Company();
-const SALARYFROM = 1500;
-const SALARYTO = 10000;
 
 const inputElements = document.querySelectorAll(".form-class [name]");
 const salaryForm = document.querySelectorAll(".salary-form [name]");
@@ -22,20 +20,19 @@ function onSubmit(event) {
         }, {}
     )
     company.hireEmployee(employee);
-
 }
-
-
 
 function onChange(event) {
     if (event.target.name == "salary" && validateSalary(event.target.value)) {
-        event.target.value = showError(event.target, `a valid salary`);
+        event.target.value = showError(event.target,
+            `a valid salary. Salary has to be more than ${MIN_SALARY} and less than ${MAX_SALARY}`);
     } else if (event.target.name == "email" && validateEmail(event.target.value)) {
         event.target.value = showError(event.target, `a valid email`);
     } else if (event.target.name == "employee_name" && validateName(event.target.value)) {
         event.target.value = showError(event.target, `a valid name`);
     } else if (event.target.name == "birthDate" && validateBirthDate(event.target.value)) {
-        event.target.value = showError(event.target, `a valid birthYear`);
+        event.target.value = showError(event.target,
+            `a valid birthDate. Year has to be more than ${MIN_YEAR} and less than ${curYear}`);
     }
 }
 
@@ -82,17 +79,18 @@ Company.prototype.getAllEmployeesBySalary = function (salaryFrom, salaryTo) {
 
 }
 
-function show() {
+function showEmplButton() {
     let allEmployee = company.getAllEmployees();
     console.log(allEmployee);
-    document.getElementById("empl").innerHTML = allEmployee.map(e => {
-        return getEmployeeBlock(e);
+    document.getElementById("empl").innerHTML = allEmployee.map(elem => {
+        return getEmployeeBlock(elem);
     }
     );
 }
 
 function getEmployeeBlock(employee) {
     return `<div class="detail-block">
+    <div class="detail-list">
     <ul>
         <li>Name: ${employee.employee_name}</li>
         <li>Email: ${employee.email}</li>
@@ -100,6 +98,7 @@ function getEmployeeBlock(employee) {
         <li>Department: ${employee.department}</li>
         <li>Salary: ${employee.salary}</li>
     </ul>
+    </div>
 </div>`;
 }
 
@@ -114,8 +113,7 @@ function showBySalary(event) {
     const salaryTo = salaryForm[1].value;
     console.log(salaryForm, salaryFrom, salaryTo);
     let employeeSalary = company.getAllEmployeesBySalary(salaryFrom, salaryTo);
-    document.getElementById("empl").innerHTML = employeeSalary.map(e => {
-        return getEmployeeBlock(e);
-    }
-    );
+    document.getElementById("empl").innerHTML = employeeSalary.map(elem => {
+        return getEmployeeBlock(elem);
+    });
 }
