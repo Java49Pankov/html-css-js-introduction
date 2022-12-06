@@ -5,9 +5,13 @@ const MAX_SALARY = 40000;
 const MIN_YEAR = 1950;
 const TIME_OUT_ERROR_MESSAGE = 5000;
 const company = new Company();
+const SALARYFROM = 1500;
+const SALARYTO = 10000;
 
 const inputElements = document.querySelectorAll(".form-class [name]");
+const salaryForm = document.querySelectorAll(".salary-form [name]");
 const detailError = document.querySelector(".detail-error");
+const allEmployees = document.querySelector(".all-employees");
 
 function onSubmit(event) {
     event.preventDefault();
@@ -18,9 +22,10 @@ function onSubmit(event) {
         }, {}
     )
     company.hireEmployee(employee);
-    console.log(employee);
-    console.log(company)
+
 }
+
+
 
 function onChange(event) {
     if (event.target.name == "salary" && validateSalary(event.target.value)) {
@@ -73,5 +78,44 @@ Company.prototype.getAllEmployees = function () {
 }
 
 Company.prototype.getAllEmployeesBySalary = function (salaryFrom, salaryTo) {
-    //TODO
+    return getSomethingBySalary(this.employees, salaryFrom, salaryTo)
+
+}
+
+function show() {
+    let allEmployee = company.getAllEmployees();
+    console.log(allEmployee);
+    document.getElementById("empl").innerHTML = allEmployee.map(e => {
+        return getEmployeeBlock(e);
+    }
+    );
+}
+
+function getEmployeeBlock(employee) {
+    return `<div class="detail-block">
+    <ul>
+        <li>Name: ${employee.employee_name}</li>
+        <li>Email: ${employee.email}</li>
+        <li>Birthdate: ${employee.birthDate}</li>
+        <li>Department: ${employee.department}</li>
+        <li>Salary: ${employee.salary}</li>
+    </ul>
+</div>`;
+}
+
+function getSomethingBySalary(employees, salaryFrom, salaryTo) {
+    const employeesBySalary = employees.filter(empl => empl.salary >= salaryFrom
+        && empl.salary <= salaryTo);
+    return employeesBySalary;
+}
+function showBySalary(event) {
+    event.preventDefault();
+    const salaryFrom = salaryForm[0].value;
+    const salaryTo = salaryForm[1].value;
+    console.log(salaryForm, salaryFrom, salaryTo);
+    let employeeSalary = company.getAllEmployeesBySalary(salaryFrom, salaryTo);
+    document.getElementById("empl").innerHTML = employeeSalary.map(e => {
+        return getEmployeeBlock(e);
+    }
+    );
 }

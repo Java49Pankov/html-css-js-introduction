@@ -39,14 +39,23 @@
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
         </div>
-        <div class="details-button">
-            <button onclick="show(0)">Add Employee</button>
-            <button onclick="show(1)">Show all employees</button>
-            <button onclick="show(2)">Show Employees by salary</button>
-        </div>
-    
     </form>
-
+    <div class="buttons">
+        <button onclick="show()">Show all employees</button>
+    </div>
+    <div id="empl">
+    </div>
+    <div>
+        <form class="salary-form" onsubmit="showBySalary(event)">
+            <div class="buttons">
+                <button type="submit">Show Employees by salary</button>
+            </div>
+            <div class="two-inputs">
+                <input type="number" name="fromSalary" placeholder="Enter salary" required>
+                <input type="number" name="toSalary" placeholder="Enter salary" required>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="src/form.js"></script>
 

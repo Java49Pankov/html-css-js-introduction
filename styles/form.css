@@ -34,11 +34,12 @@ html {
     width: 40vw;
     margin-top: 5vh;
 }
+
 .details-button {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width:  40vw;
+    width: 40vw;
     margin-top: 5vh;
 }
 
@@ -50,4 +51,16 @@ html {
 .detail-error {
     background-color: red;
     color: white;
+}
+
+.salary-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detail-block {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
 }
