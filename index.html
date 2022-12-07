@@ -27,7 +27,6 @@
             <div class="date-label">
                 <label>Enter birthdate</label>
                 <input type="date" name="birthDate" required onchange="onChange(event)">
-
             </div>
             <p id="date_error" class="error"></p>
             <div class="two-inputs">
@@ -41,28 +40,25 @@
                     <option value="Audit">Audit</option>
                 </select>
                 <input type="number" name="salary" placeholder="Enter salary" onchange="onChange(event)" required>
-
             </div>
             <p id="salary_error" class="error"></p>
             <div class="buttons">
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
-
-
-
         </form>
     </section>
     <section id="show-all-employees" hidden>
         <ul class="employees-list" id="employees-all">
-
         </ul>
     </section>
     <section id="show-employees-salary" hidden>
         <form id="salary-form" class="form-class" onsubmit="onSubmitSalary(event)">
             <div class="two-inputs">
-                <input type="number" name="salaryFrom" placeholder="Enter salary 'From'" onchange="onChangeSalaryFrom(event)" required>
-                <input type="number" name="salaryTo" placeholder="Enter salary 'To'" onchange="onChangeSalaryTo(event)" required>
+                <input type="number" name="salaryFrom" placeholder="Enter salary 'From'"
+                    onchange="onChangeSalaryFrom(event)" required>
+                <input type="number" name="salaryTo" placeholder="Enter salary 'To'" onchange="onChangeSalaryTo(event)"
+                    required>
             </div>
             <div class="buttons">
                 <button type="submit">Search</button>
@@ -74,8 +70,8 @@
 
         </ul>
     </section>
-    
-    <script src="src/form.js"></script>
+
+    <script src="src/main.js" type="module"></script>
 </body>
 
 </html>

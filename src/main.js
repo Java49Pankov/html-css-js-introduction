@@ -1,3 +1,4 @@
+import { Company } from "./data/Company.js";
 const inputElements = document.querySelectorAll(".form-class [name]");
 const MIN_SALARY = 1000;
 const MAX_SALARY = 40000;
@@ -28,16 +29,16 @@ function onSubmit(event) {
     )
     console.log(employee)
     company.hireEmployee(employee);
-    
 }
-function onChange(event) {
 
+function onChange(event) {
     if (event.target.name == "salary") {
         validateSalary(event.target)
     } else if (event.target.name == "birthDate") {
         validateBirthdate(event.target);
     }
 }
+
 function validateSalary(element) {
     const value = +element.value;
     if (value < MIN_SALARY || value > MAX_SALARY) {
@@ -45,24 +46,23 @@ function validateSalary(element) {
             : `salary must be ${MAX_SALARY} or less`;
         showErrorMessage(element, message, salaryErrorElement);
     }
-
 }
+
 function validateBirthdate(element) {
     const value = +element.value.slice(0, 4);
     if (value < MIN_YEAR || value > maxYear) {
-        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater`:
-             `year must be ${maxYear} or less`;
-        showErrorMessage(element, message, dateErrorElement) ;    
-
+        const message = value < MIN_YEAR ? `year must be ${MIN_YEAR} or greater` :
+            `year must be ${maxYear} or less`;
+        showErrorMessage(element, message, dateErrorElement);
     }
-
 }
+
 function showErrorMessage(element, message, errorElement) {
     element.classList.add(ERROR_CLASS);
     errorElement.innerHTML = message;
     setTimeout(() => {
         element.classList.remove(ERROR_CLASS);
-        element.value = ''; 
+        element.value = '';
         errorElement.innerHTML = '';
     }, TIME_OUT_ERROR_MESSAGE);
 }
@@ -70,21 +70,7 @@ function showErrorMessage(element, message, errorElement) {
 function getMaxYear() {
     return new Date().getFullYear();
 }
-/************************************************************* */
-//functions of Company
-function Company() {
-    this.employees = [];
-}
-Company.prototype.hireEmployee = function(employee) {
-    employee.salary = +employee.salary;
-    this.employees.push(employee);
-}
-Company.prototype.getAllEmployees = function(){
-    return this.employees;
-}
-Company.prototype.getEmployeesBySalary = function(salaryFrom, salaryTo) {
-    return this.employees.filter(e => e.salary >= salaryFrom && e.salary < salaryTo )
-}
+
 /********************************************************************************** */
 
 //functions of Salary Form
@@ -95,27 +81,27 @@ function onSubmitSalary(event) {
     event.preventDefault();
     const employees = company.getEmployeesBySalary(salaryFrom, salaryTo);
     employeesSalaryListElement.innerHTML = getEmployeeItems(employees);
-
-
-   
 }
+
 function onChangeSalaryFrom(event) {
     const value = +event.target.value;
     if (salaryTo && value >= salaryTo) {
         showErrorMessage(event.target, "Salary 'from' must be less than Salary 'to'",
-        salaryFormErrorElement);
+            salaryFormErrorElement);
     } else {
         salaryFrom = value;
     }
 }
+
 function onChangeSalaryTo(event) {
     const value = +event.target.value;
     if (salaryFrom && value < salaryFrom) {
         showErrorMessage(event.target, "Salary 'To' must be greater than Salary 'From'",
-        salaryFormErrorElement);
+            salaryFormErrorElement);
     }
     salaryTo = value;
 }
+
 function showSection(index) {
     buttonsMenuElement.forEach(e => e.classList.remove(ACTIVE));
     sectionsElement.forEach(e => e.hidden = true)
@@ -126,8 +112,9 @@ function showSection(index) {
         employeesListElement.innerHTML = getEmployeeItems(employees);
     }
 }
+
 function getEmployeeItems(employees) {
-    return employees.map (e => 
+    return employees.map(e =>
         `<li class="employees-item">
               <div class="employees-item-container">
                  <p class="employees-item-paragraph">Name: ${e.employee_name} </p>
@@ -139,3 +126,9 @@ function getEmployeeItems(employees) {
           </li>`).join('');
 }
 
+window.onSubmit = onSubmit;
+window.onChange = onChange;
+window.onSubmitSalary = onSubmitSalary;
+window.onChangeSalaryFrom = onChangeSalaryFrom;
+window.onChangeSalaryTo = onChangeSalaryTo;
+window.showSection = showSection;
