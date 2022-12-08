@@ -4,12 +4,18 @@ const MIN_SALARY = 1000;
 const MAX_SALARY = 40000;
 const MIN_YEAR = 1950;
 const TIME_OUT_ERROR_MESSAGE = 5000;
+const ACTIVE_CLASS = "active"
 const company = new Company();
+let salaryFrom = 0;
+let salaryTo = 0;
 
 const inputElements = document.querySelectorAll(".form-class [name]");
 const salaryForm = document.querySelectorAll(".salary-form [name]");
 const detailError = document.querySelector(".detail-error");
+const salaryError = document.querySelector(".salary-error");
 const allEmployees = document.querySelector(".all-employees");
+const buttonMenu = document.querySelectorAll(".main-button *");
+const sectionElements = document.querySelectorAll("section");
 
 function onSubmit(event) {
     event.preventDefault();
@@ -25,15 +31,37 @@ function onSubmit(event) {
 function onChange(event) {
     if (event.target.name == "salary" && validateSalary(event.target.value)) {
         event.target.value = showError(event.target,
-            `a valid salary. Salary has to be more than ${MIN_SALARY} and less than ${MAX_SALARY}`);
+            `a valid salary. Salary has to be more than ${MIN_SALARY} and less than ${MAX_SALARY}`, detailError);
     } else if (event.target.name == "email" && validateEmail(event.target.value)) {
-        event.target.value = showError(event.target, `a valid email`);
+        event.target.value = showError(event.target, `a valid email`, detailError);
     } else if (event.target.name == "employee_name" && validateName(event.target.value)) {
-        event.target.value = showError(event.target, `a valid name`);
+        event.target.value = showError(event.target, `a valid name`, detailError);
     } else if (event.target.name == "birthDate" && validateBirthDate(event.target.value)) {
         event.target.value = showError(event.target,
-            `a valid birthDate. Year has to be more than ${MIN_YEAR} and less than ${curYear}`);
+            `a valid birthDate. Year has to be more than ${MIN_YEAR} and less than ${curYear}`, detailError);
+
+    } else if (event.target.name == "salaryFrom") {
+        salaryFrom = event.target.value;
+        if (validateSalaryFrom(event.target.value)) {
+            event.target.value = showError(event.target, `salaryFrom= ${salaryFrom} has to be less than ${salaryTo}`, salaryError);
+        }
+    } else if (event.target.name == "salaryTo") {
+        salaryTo = event.target.value;
+        if (validateSalaryTo(event.target.value)) {
+            salaryTo = event.target.value;
+            event.target.value = showError(event.target, `salaryTo= ${salaryTo} has to be less than ${salaryFrom}`, salaryError);
+        }
     }
+}
+
+function validateSalaryFrom(salFrom) {
+    console.log(salFrom)
+    return salaryTo && +salFrom >= salaryTo;
+}
+
+function validateSalaryTo(salTo) {
+    console.log(salTo, salaryFrom)
+    return (salaryFrom && +salTo < salaryFrom);
 }
 
 function validateBirthDate(birthDate) {
@@ -53,12 +81,14 @@ function validateName(name) {
     return name.length < 2 || name.length == 0 || name.length > 16;
 }
 
-function showError(element, text) {
+function showError(element, text, errorElement) {
+    console.log(detailError);
     element.classList.add(ERROR);
-    detailError.textContent = "ERROR: enter " + text;
+    errorElement.textContent = "ERROR: enter " + text;
+
     setTimeout(function () {
         element.classList.remove(ERROR);
-        detailError.textContent = "";
+        errorElement.textContent = "";
     }, TIME_OUT_ERROR_MESSAGE)
     return "";
 }
@@ -78,10 +108,21 @@ Company.prototype.getAllEmployeesBySalary = function (salaryFrom, salaryTo) {
     return getSomethingBySalary(this.employees, salaryFrom, salaryTo)
 
 }
+function showButton(index) {
+    sectionElements.forEach(section => section.hidden = true);
+    buttonMenu.forEach(button => button.classList.remove(ACTIVE_CLASS));
+    sectionElements[index].hidden = false;
+    buttonMenu[index].classList.add(ACTIVE_CLASS);
+    if (index == 1) {
+        showEmplButton();
+    } else if (index == 2) {
+        from = 0;
+        to = 0;
+    }
+}
 
 function showEmplButton() {
     let allEmployee = company.getAllEmployees();
-    console.log(allEmployee);
     document.getElementById("empl").innerHTML = allEmployee.map(elem => {
         return getEmployeeBlock(elem);
     }
@@ -107,13 +148,13 @@ function getSomethingBySalary(employees, salaryFrom, salaryTo) {
         && empl.salary <= salaryTo);
     return employeesBySalary;
 }
+
 function showBySalary(event) {
     event.preventDefault();
     const salaryFrom = salaryForm[0].value;
     const salaryTo = salaryForm[1].value;
-    console.log(salaryForm, salaryFrom, salaryTo);
     let employeeSalary = company.getAllEmployeesBySalary(salaryFrom, salaryTo);
-    document.getElementById("empl").innerHTML = employeeSalary.map(elem => {
+    document.getElementById("empls").innerHTML = employeeSalary.map(elem => {
         return getEmployeeBlock(elem);
     });
 }

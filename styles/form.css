@@ -10,6 +10,11 @@ html {
     align-items: center;
 }
 
+.main-button {
+    display: flex;
+    justify-content: center;
+}
+
 .two-inputs {
     display: flex;
     flex-direction: row;
@@ -43,12 +48,9 @@ html {
     margin-top: 5vh;
 }
 
-.error {
-    background-color: red;
-    color: white;
-}
-
-.detail-error {
+.detail-error,
+.error,
+.salary-error {
     background-color: red;
     color: white;
 }
@@ -73,4 +75,9 @@ html {
 .detail-list {
     display: block;
     background-color: aliceblue;
+}
+
+.active {
+    background-color: blue;
+    color: white;
 }

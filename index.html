@@ -10,50 +10,63 @@
 </head>
 
 <body>
-    <form id="employee-form" class="form-class" onsubmit="onSubmit(event)">
-        <div class="detail-error"></div>
-        <div class="two-inputs">
-            <input type="text" name="employee_name" required placeholder="Enter employee name"
-                onChange="onChange(event)">
-            <input type="email" name="email" required placeholder="Enter email" onChange="onChange(event)">
-
-        </div>
-        <div class="date-label">
-            <label>Enter birthdate</label>
-            <input type="date" name="birthDate" required placeholder="birthDate" onChange="onChange(event)">
-        </div>
-        <div class="two-inputs">
-            <select name="department" required>
-                <option value hidden selected disabled>
-                    --Select Department--
-                </option>
-                <option value="QA">QA</option>
-                <option value="Development">Development</option>
-                <option value="Managment">Managment</option>
-                <option value="Audit">Audit</option>
-            </select>
-            <input class="salarys" type="number" name="salary" placeholder="Enter salary" required
-                onChange="onChange(event)">
-        </div>
-        <div class="buttons">
-            <button type="submit">Add employees</button>
-            <button type="reset">Reset</button>
-        </div>
-    </form>
-    <div>
-        <form class="salary-form" onsubmit="showBySalary(event)">
-            <div class="buttons">
-                <button onclick="showEmplButton()">Show all employees</button>
-                <button type="submit">Show Employees by salary</button>
+    <div class="main-button">
+        <button onclick="showButton(0)">Add employee</button>
+        <button onclick="showButton(1)">Show all employees</button>
+        <button onclick="showButton(2)">Show Employees by salary</button>
+    </div>
+    <section hidden>
+        <form id="employee-form" class="form-class" onsubmit="onSubmit(event)">
+            <p class="detail-error"></p>
+            <div class="two-inputs">
+                <input type="text" name="employee_name" required placeholder="Enter employee name"
+                    onChange="onChange(event)">
+                <input type="email" name="email" required placeholder="Enter email" onChange="onChange(event)">
+            </div>
+            <div class="date-label">
+                <label>Enter birthdate</label>
+                <input type="date" name="birthDate" required placeholder="birthDate" onChange="onChange(event)">
             </div>
             <div class="two-inputs">
-                <input type="number" name="fromSalary" placeholder="Enter salary" required>
-                <input type="number" name="toSalary" placeholder="Enter salary" required>
+                <select name="department" required>
+                    <option value hidden selected disabled>
+                        --Select Department--
+                    </option>
+                    <option value="QA">QA</option>
+                    <option value="Development">Development</option>
+                    <option value="Managment">Managment</option>
+                    <option value="Audit">Audit</option>
+                </select>
+                <input class="salarys" type="number" name="salary" placeholder="Enter salary" required
+                    onChange="onChange(event)">
+            </div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
             </div>
         </form>
-    </div>
-    <div id="empl">
-    </div>
+    </section>
+    <section hidden>
+        <div id="empl">
+        </div>
+    </section>
+    <section hidden>
+        <form class="salary-form" onsubmit="showBySalary(event)">
+            <div class="two-inputs">
+                <input type="number" name="salaryFrom" placeholder="Enter salary from" required
+                    onChange="onChange(event)">
+                <input type="number" name="salaryTo" placeholder="Enter salary to" required onChange="onChange(event)">
+            </div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <p class="salary-error"></p>
+        <div id="empls">
+        </div>
+    </section>
+
 </body>
 <script src="src/form.js"></script>
 
