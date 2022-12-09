@@ -1,20 +1,57 @@
-==========HW#22===================
+==========HW#23===================
 
-1. Develop page with three functional views
-1.1. Three buttons triggering the following views
-1.1.1.Add Employee – presents form for inputting an Employee data (see the
-lesson #21)
-1.1.2. Show all employees – presents data about all Employee objects
-1.1.3. Show employees by Salary presents the following
-1.1.3.1. Form with the following
-1.1.3.1.1. Input field for inputting a value of the salary “From”
-1.1.3.1.2. Input field for inputting a value of the salary “To”
-1.1.3.1.3. Button “Submit”
-1.1.3.1.4. Button “Reset”
-1.1.3.1.5. Validation: salaryTo should be greater than the value of
-the salaryFrom
-1.1.3.2. After submitting the form on the same view there should be
-presented the data about all Employees having salary in the inputted
-range (salaryFrom is inclusive, salaryTo is exclusive that is salary >=
-salaryFrom && salary < salaryTo)
-1.2. The data about one Employee is presented as shown below
+
+1. Write application for presenting the books in a small library
+1.1. Application should comprise of the following files
+1.1.1. Index.html - HTML content for presenting the data on the Browser
+window with connection to library.css and main.js described below
+1.1.2. styles/library.css - CSS file with styles
+1.1.3. src/main.js - module containing UI stuff
+1.1.4. src/data/library.js - module with exported class Library containing the
+field “books” as array of the book objects and the following methods
+1.1.4.1. constructor() creating field this.books = []
+1.1.4.2. addBook(book) adding a given book object to the library
+1.1.4.3. getAllBooks() returning array of all book objects
+1.1.4.4. getAuthorBooks(author) returning array of the books written by
+a given author
+1.1.4.5. getBooksByPages(pagesFrom, pagesTo) returning array of
+the books having amount of the pages in the range from pagesFrom
+(inclusive) to pagesTo(excusive)
+1.2. Application should perform the following functionality
+1.2.1. Adding new book in library
+1.2.2. Presenting all the books
+1.2.3. Presenting the books written by a given author
+1.2.4. Presenting the books having the number of the pages in a given range
+1.3. UI requirements
+1.3.1. At the WEB page loading there should appear four buttons in
+accordance with the functionality described in 1.2
+
+
+1.3.2. Adding book
+1.3.2.1. Form with the following required input fields
+1.3.2.1.1. Book title (type text with no a validation)
+1.3.2.1.2. Author (type text with no a validation)
+1.3.2.1.3. Genre (select from the options defining the possible
+genres, such as “Fantasy”, “Roman”, etc.)
+1.3.2.1.4. Publishing date (type date with the date validation, the
+date should be in the range from 1980-01-01 to the current date
+1.3.2.1.5. Number of the pages (type number with the validation
+of the range [50–2000])
+
+1.3.2.2. Presenting all the books
+1.3.2.2.1. Scrolled list of the book data in row
+1.3.2.3. Presenting the books written by an author
+1.3.2.3.1. Input field (required) for typing the author's name
+1.3.2.3.2. Button “search” in row with the input field
+1.3.2.3.3. Hitting the button should trigger showing the list of the
+book data written by the inputted author
+
+
+1.3.2.4. Presenting the books having the number of the pages in a range
+1.3.2.4.1. Two input fields for typing pages “from” and pages “to”
+with the validation of that pages “to” should be greater than
+pages “from”
+1.3.2.4.2. Buttons “Search” and “Reset” under the input fields
+1.3.2.4.3. Hitting the button “Search” should trigger showing the
+list of the b
+ook data having the specified range of the pages
