@@ -53,5 +53,4 @@ with the validation of that pages “to” should be greater than
 pages “from”
 1.3.2.4.2. Buttons “Search” and “Reset” under the input fields
 1.3.2.4.3. Hitting the button “Search” should trigger showing the
-list of the b
-ook data having the specified range of the pages
+list of the book data having the specified range of the pages

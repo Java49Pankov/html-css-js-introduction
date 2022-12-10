@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <header class="title">Presentation of books in a small library</header>
-    <div class="menu-button">
+    <header class="title-main">Presentation of books in a small library</header>
+    <div class="main-button">
         <button onclick="showBook(0)">Add new book</button>
         <button onclick="showBook(1)">Present all books</button>
         <button onclick="showBook(2)">author</button>
@@ -21,7 +21,7 @@
         <form class="form-library" onsubmit="onSubmit(event)">
             <div class="title-book">
                 <input type="text" name="book_title" required placeholder="enter book name">
-                <input type="text" name="author_name" required placeholder="enter author name">
+                <input type="text" name="author" required placeholder="enter author name">
             </div>
             <div class="details-genre">
                 <select name="genre" required>
@@ -35,29 +35,53 @@
                     <option value="Horror">Horror</option>
                 </select>
             </div>
-            <p class="error"></p>
+            <p class="error-message"></p>
+            <div class="date-label">
+                <label>Enter publishing date</label>
+                <input type="date" name="publishingDate" required onChange="onChange(event)">
+            </div>
             <div class="two-inputs">
-                <input type="data" nama="publishingDate" required placeholder="enter publishing date">
-                <input type="number" name="pages" required placeholder="enter number of the pages">
+                <input type="number" name="pages" required placeholder="enter number of the pages"
+                    onChange="onChange(event)">
             </div>
             <div class="submit-buttons">
-                <button>submit</button>
-                <button>reset</button>
+                <button type="submit">submit</button>
+                <button type="reset">reset</button>
             </div>
         </form>
     </section>
 
     <section hidden>
-        <div>blablabla 1</div>
-    </section>
-    <section hidden>
-        <div>blablabla 2</div>
-    </section>
-    <section hidden>
-        <div>blablabla 3</div>
+        <header class="title">presentation all library</header>
+        <div id="all-books">
+        </div>
     </section>
 
-    <script src="src/main.js"></script>
+    <section hidden>
+        <header class="title">presentation of books by author</header>
+        <form class="form-author" onsubmit="onSubmitAuthor(event)">
+            <input type="text" name="author-name" required placeholder="enter author name">
+            <button type="submit">search</button>;
+        </form>
+        <div id="author-books">
+        </div>
+    </section>
+    <section hidden>
+        <header class="title">presentation of books by number of pages</header>
+        <form class="form-range-pages" onsubmit="onSubmitPages(event)">
+            <div class="detail-page">
+                <input type="number" name="pagesFrom" placeholder="enter pages from" required
+                    onChange=" onChangePages(event)">
+                <input type="number" name="pagesTo" placeholder="enter pages to" required
+                    onChange=" onChangePages(event)">
+                <button type="submit">search</button>
+                <button type="reset">reset</button>
+            </div>
+        </form>
+    </section>
+    <p class="error-pages-message"></p>
+    <div id="range-pages">
+        <script src="src/main.js" type="module"></script>
 </body>
 
 </html>

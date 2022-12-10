@@ -7,7 +7,7 @@ body {
     background: rgba(97, 82, 0, 0.342);
 }
 
-.title {
+.title-main {
     font-size: 2em;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(48, 11, 17);
@@ -15,7 +15,15 @@ body {
     justify-content: center;
 }
 
-.menu-button {
+.title {
+    font-size: 1.5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+}
+
+.main-button {
     display: flex;
     justify-content: space-evenly;
     width: 40vw;
@@ -48,6 +56,13 @@ body {
 
 }
 
+.detail-page {
+    display: flex;
+    justify-content: space-around;
+    width: 40vw;
+    margin-top: 5vh;
+}
+
 .details-genre {
     margin: 5vh
 }
@@ -59,7 +74,38 @@ body {
     margin: 2vw;
 }
 
-.error {
+.error,
+.error-message,
+.error-pages-message {
     border-color: red;
     color: red;
+}
+
+.form-author {
+    display: flex;
+    justify-content: left;
+    margin: 10vh 0vw 0vh 20vw;
+}
+
+#all-books {
+    display: flex;
+    flex-direction: row;
+}
+
+#all-books,
+#author-books,
+#range-pages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 70vh;
+    list-style: none;
+    overflow-y: scroll;
+    justify-content: space-around;
+   
+}
+.detail-list {
+    background-color: rgb(194, 188, 175);
+    margin: 1vh;
+    color: rgb(57, 59, 3);
 }
