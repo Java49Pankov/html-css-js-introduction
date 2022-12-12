@@ -18,7 +18,7 @@
         <button onclick="showBook(3)">number of pages</button>
     </div>
     <section hidden>
-        <form class="form-library" onsubmit="onSubmit(event)">
+        <form id="book_form" class="form-library">
             <div class="title-book">
                 <input type="text" name="book_title" required placeholder="enter book name">
                 <input type="text" name="author" required placeholder="enter author name">
@@ -35,15 +35,15 @@
                     <option value="Horror">Horror</option>
                 </select>
             </div>
-            <p class="error-message"></p>
             <div class="date-label">
                 <label>Enter publishing date</label>
-                <input type="date" name="publishingDate" required onChange="onChange(event)">
+                <input id="date_input" type="date" name="publishingDate" required>
             </div>
+            <p id="date_error" class="error-message"></p>
             <div class="two-inputs">
-                <input type="number" name="pages" required placeholder="enter number of the pages"
-                    onChange="onChange(event)">
+                <input id="page_input" type="number" name="pages" required placeholder="enter number of the pages">
             </div>
+            <p id="page_error" class="error-message"></p>
             <div class="submit-buttons">
                 <button type="submit">submit</button>
                 <button type="reset">reset</button>
