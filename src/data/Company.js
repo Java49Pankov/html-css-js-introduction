@@ -1,5 +1,3 @@
-/************************************************************* */
-//functions of Company
 export class Company {
     constructor() {
         this.employees = [];
