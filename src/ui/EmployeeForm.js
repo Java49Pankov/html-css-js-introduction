@@ -1,4 +1,5 @@
 import { showErrorMessage } from "./errorMessage.js";
+
 export class EmployeeForm {
     #formElement;
     #inputElements;
@@ -24,7 +25,7 @@ export class EmployeeForm {
         this.onChange();
     }
 
-    addSubmitHandler(processEmployeeFun) {
+    addSubmitHandler(processEmployeeFunc) {
         this.#formElement.addEventListener("submit", (event) => {
             event.preventDefault();
             console.log("submitted");
@@ -35,7 +36,7 @@ export class EmployeeForm {
                 }, {}
             )
             console.log(employee)
-            processEmployeeFun(employee);
+            processEmployeeFunc(employee);
         })
     }
 
@@ -47,6 +48,7 @@ export class EmployeeForm {
             this.validateSalary(event.target);
         })
     }
+
 
     validateSalary(element) {
         const value = +element.value;
