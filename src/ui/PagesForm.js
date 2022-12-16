@@ -40,7 +40,7 @@ export class PagesForm {
             const value = +event.target.value;
             if (this.#pagesFrom && value < this.#pagesFrom) {
                 showError(event.target,
-                    `PageTo  must be greater than PagesFrom`, this.#errorPageMessage);
+                    `PageTo must be greater than PagesFrom`, this.#errorPageMessage);
             } else {
                 this.#pagesTo = value;
             }

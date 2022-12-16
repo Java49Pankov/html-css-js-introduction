@@ -2,25 +2,17 @@
 export class AuthorForm {
     #formElement;
     #authorInputElement;
-    #author;
+
     constructor(params) {
         this.#formElement = document.getElementById(params.idForm);
         this.#authorInputElement = document.getElementById(params.idAuthorInput);
-        this.getAuthor();
     }
 
     addSubmitHandler(processBooksFun) {
         this.#formElement.addEventListener("submit", (event) => {
             event.preventDefault();
-            const authorObj = { author: this.#author };
+            const authorObj = this.#authorInputElement.value;
             processBooksFun(authorObj);
-        })
-    }
-
-    getAuthor() {
-        this.#authorInputElement.addEventListener("change", (event) => {
-            const value = event.target.value;
-            this.#author = value;
         })
     }
 }

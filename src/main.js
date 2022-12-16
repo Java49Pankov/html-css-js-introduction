@@ -29,7 +29,7 @@ const authorForm = new AuthorForm({
     idForm: "authors_form", idAuthorInput: "author_input"
 })
 authorForm.addSubmitHandler((authorObj) => {
-    const authors = library.getAuthorBooks(authorObj.author);
+    const authors = library.getAuthorBooks(authorObj);
     listLibraryByAuthor.showBooks(authors);
 })
 

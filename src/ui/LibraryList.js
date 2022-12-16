@@ -9,7 +9,8 @@ export class LibraryList {
     }
 }
 function getBooks(book) {
-    return book.map(value => `<div class="detail-list">
+    return book.map(value =>
+        `<div class="detail-list">
     <ul>
         <li>title: ${value.book_title}</li>
         <li>author: ${value.author}</li>
@@ -17,5 +18,5 @@ function getBooks(book) {
         <li>date: ${value.publishingDate}</li>
         <li>pages: ${value.pages}</li>
     </ul>
-    </div>`);
+    </div>` );
 }
