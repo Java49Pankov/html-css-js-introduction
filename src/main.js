@@ -1,4 +1,4 @@
-import { AuthorForm } from "./ui/AuthorForm.js";
+import { AuthorForm } from "./ui/AuthorForm.js"
 import { Library } from "./data/library.js";
 import { BookForm } from "./ui/bookForm.js";
 import { LibraryList } from "./ui/LibraryList.js";
@@ -25,6 +25,14 @@ const bookForm = new BookForm({
 })
 bookForm.addSubmitHandler((book) => library.addBook(book))
 
+const authorForm = new AuthorForm({
+    idForm: "authors_form", idAuthorInput: "author_input"
+})
+authorForm.addSubmitHandler((authorObj) => {
+    const authors = library.getAuthorBooks(authorObj.author);
+    listLibraryByAuthor.showBooks(authors);
+})
+
 const pagesForm = new PagesForm({
     idForm: "form_pages", idPagesFromInput: "pages-from",
     idPagesToInput: "pages-to", idErrorMessage: "error-pages"
@@ -34,13 +42,7 @@ pagesForm.addSubmitHandler((booksObj) => {
     listLibraryByRange.showBooks(books);
 })
 
-const authorForm = new AuthorForm({
-    idForm: "authors_form", idAuthorInput: "author_input"
-})
-authorForm.addSubmitHandler((authorObj) => {
-    const authors = library.getAuthorBooks(authorObj.author);
-    listLibraryByAuthor.showBooks(authors);
-})
+
 
 function showBook(index) {
     sectionElement.forEach(section => section.hidden = true);

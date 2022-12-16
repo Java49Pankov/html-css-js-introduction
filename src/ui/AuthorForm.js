@@ -3,7 +3,7 @@ export class AuthorForm {
     #formElement;
     #authorInputElement;
     #author;
-    construcor(params) {
+    constructor(params) {
         this.#formElement = document.getElementById(params.idForm);
         this.#authorInputElement = document.getElementById(params.idAuthorInput);
         this.getAuthor();
@@ -12,7 +12,7 @@ export class AuthorForm {
     addSubmitHandler(processBooksFun) {
         this.#formElement.addEventListener("submit", (event) => {
             event.preventDefault();
-            const authorObj = { authors: this.#author };
+            const authorObj = { author: this.#author };
             processBooksFun(authorObj);
         })
     }
