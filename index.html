@@ -59,8 +59,8 @@
 
     <section hidden>
         <header class="title">presentation of books by author</header>
-        <form class="form-author" onsubmit="onSubmitAuthor(event)">
-            <input type="text" name="author-name" required placeholder="enter author name">
+        <form id="authors_form" class="form-author">
+            <input id="author_input" type="text" name="author-name" required placeholder="enter author name">
             <button type="submit">search</button>;
         </form>
         <div id="author-books">
@@ -68,19 +68,17 @@
     </section>
     <section hidden>
         <header class="title">presentation of books by number of pages</header>
-        <form class="form-range-pages" onsubmit="onSubmitPages(event)">
+        <form id="form_pages" class="form-range-pages">
             <div class="detail-page">
-                <input type="number" name="pagesFrom" placeholder="enter pages from" required
-                    onChange=" onChangePages(event)">
-                <input type="number" name="pagesTo" placeholder="enter pages to" required
-                    onChange=" onChangePages(event)">
+                <input id="pages-from" type="number" name="pagesFrom" placeholder="enter pages from" required>
+                <input id="pages-to" type="number" name="pagesTo" placeholder="enter pages to" required>
                 <button type="submit">search</button>
                 <button type="reset">reset</button>
             </div>
         </form>
     </section>
-    <p class="error-pages-message"></p>
-    <div id="range-pages">
+    <p id="error-pages" class="error-pages-message"></p>
+    <div id="range-pages"></div>
         <script src="src/main.js" type="module"></script>
 </body>
 
